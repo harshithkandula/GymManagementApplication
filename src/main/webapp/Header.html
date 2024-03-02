@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                background-color:burlywood;
+            }
+            li{
+                float: left;
+            }
+             li button a{
+                text-decoration: none;
+             }   
+             
+             .ddn{
+                position: relative;
+                display: inline-block;
+             }
+
+             .ddn-ctn{
+                display: none;
+             }
+
+             .ddn:hover .ddn-ctn{
+                display: block;
+             }
+        </style>
+    </head>
+    <body>
+        <div style="background-color:cadetblue;">
+            <h1>Welcome to Zumba Gym</h1>
+            <sub>Gateway to join fit india campaign</sub>
+        </div>
+         <div>
+             <ul style="list-style-type: none;">
+                <li>
+                    <button>
+                        <a href="index.jsp">Home</a>
+                    </button>
+                </li>
+                <li class="ddn" >
+                    <button>
+                        <a href="">Participant</a>
+                    </button>
+                    <div class="ddn-ctn">
+                        <a href="ParticipantDetails.jsp">Participant Details</a>
+                    </div>
+                    <div class="ddn-ctn">
+                         <a href="dap">List Of Participants</a>
+                    </div>
+                    <div class="ddn-ctn">
+                        <a href="SearchParticipant.html">Search Participant</a>
+                    </div>
+                </li>
+                <li class="ddn">
+                    <button>
+                        <a href="">Batch</a>
+                    </button>
+                    <div class="ddn-ctn">
+                        <a href="BatchDetails.jsp">Batch Details</a>
+                    </div>
+                    <div class="ddn-ctn">
+                        <a href="dab">List Of Batches</a>
+                    </div>
+                    <div class="ddn-ctn">
+                        <a href="SearchBatch.jsp">Search Batches</a>
+                    </div>
+                </li>
+                
+                <li style="margin-left: 60%;"><button><a href="Participant.jsp">Register Participant</a></button></li>
+                <li><button><a href="CreateBatch.html">Add Batch</a></button></li>
+                
+             </ul>
+         </div>
+         <div style="margin: 50px;" class="myphoto">
+            <img src="E:\Simplilearn\Backend_fsd\Java\media\zumba.jpg" alt="zumba">
+         </div>
+         <div class="myphoto" style="margin: 50px;">
+            <img src="E:\Simplilearn\Backend_fsd\Java\media\gymoutline.jpg" alt="gyminfra">
+         </div>
+         <div class="myphoto" style="margin: 50px;">
+            <img src="E:\Simplilearn\Backend_fsd\Java\media\gym-near-me-.jpeg" alt="gym">
+         </div>
+
+         <script>
+            let slideIndex = 0;
+            showSlides();
+
+            function showSlides(){
+                let i;
+                let photos = document.getElementsByClassName("myphoto");
+                for (i = 0; i < photos.length; i++) {
+                    photos[i].style.display = "none";
+                    
+                }
+                slideIndex++;
+                if(slideIndex > photos.length){
+                    slideIndex = 1;
+                }
+                photos[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 2000);
+
+            }
+         </script>
+    </body>
+</html>
