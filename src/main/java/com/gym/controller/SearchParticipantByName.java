@@ -34,7 +34,8 @@ public class SearchParticipantByName extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		String p_name = request.getParameter("pname");
+		String p_id = request.getParameter("pname");
+		int pid = Integer.valueOf(p_id);		
 		Db d = new Db();
 		out.println("<html>");
 		out.println("<head>");
@@ -47,7 +48,7 @@ public class SearchParticipantByName extends HttpServlet {
 		out.println("}");
 		out.println("</style>");
 		out.println("</head>");
-		ArrayList<Participant> pdbn = d.displayParticipantByName(p_name);
+		ArrayList<Participant> pdbn = d.displayParticipantById(pid);
 		StringBuffer b = new StringBuffer();
 		if(pdbn.size()>0) {
 			b.append("<table>");

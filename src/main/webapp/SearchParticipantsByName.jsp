@@ -6,6 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style type="text/css">
+          *{
+                background-color:burlywood;
+            }
+    </style>
 <meta charset="ISO-8859-1">
 <title>Search Participants By Name</title>
 </head>
@@ -23,7 +28,7 @@
                    if(pn.size() > 0){
                 	   for(Participant p:pn){
                 		   %>
-                		   <option value=<%=p.name %>><%=p.name %></option>
+                		   <option value=<%=p.id %>><%=p.name %></option>
                 		   <% 
                 	   }
                    }
