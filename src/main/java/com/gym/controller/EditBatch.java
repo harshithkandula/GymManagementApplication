@@ -63,20 +63,7 @@ public class EditBatch extends HttpServlet {
 			out.println("</form>");
 		}
 		
-		/*String id = request.getParameter("bid");
-		String batchTime = request.getParameter("btiming");
-		String batchSth = request.getParameter("strength");
-		int bsth = Integer.parseInt(batchSth);
-		String batchsd = request.getParameter("sdate");
 		
-		int result = d.updateBatch(id, batchName, batchTime, bsth, batchsd);
-		
-		if(result > 0) {
-			out.println("<h3>Batch Details of "+batchName+" Updated Successfully</h3>");
-		}
-		else {
-			out.println("<h3>Sorry, Batch Details not modified</h3>");
-		}*/
 		out.println("</html>");
 		out.close();
 	}

@@ -77,22 +77,7 @@ public class EditParticipant extends HttpServlet {
 		}
 		
 		
-		/*String  name = request.getParameter("pname");
-		String pdob = request.getParameter("dob");
-		String pgend = request.getParameter("gender");
-		String batch = request.getParameter("bname");
-		String prof = request.getParameter("job");
-		String ph = request.getParameter("phno");
-		String ad = request.getParameter("addr");
 		
-		int result = d.updateParticipant(pid, name, pdob, pgend, batch, prof, ph, ad);
-		
-		if(result > 0) {
-			out.println("<h3>Participant Details Updated Successfully</h3>");
-		}
-		else {
-			out.println("<h3>Update unsuccessful</h3>");
-		}*/
 		
 		out.println("</html>");
 		out.close();
