@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.gym.db.Db;
+import com.gym.model.Batch;
 import com.gym.model.Participant;
 
 /**
@@ -44,7 +45,7 @@ public class Register extends HttpServlet {
 		String uname = config.getInitParameter("username");
 		String pwd = config.getInitParameter("password");
 		String url = config.getInitParameter("driverlink");
-		
+		String batchName = null;
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		Db db = new Db();
@@ -58,27 +59,11 @@ public class Register extends HttpServlet {
 		if(batchnm.size()>0) {
 			for(String b: batchnm) {
 				p.batchname = b;
+				batchName = b;
 			}
 		}
 
-		//p.batchname = request.getParameter("bname");
 		
-		/*String batch_name = request.getParameter("bname");
-		if(batch_name == "morning") {
-			String sql = "select name from batch where where id ='ZBM'";
-		    try {
-				connection = DriverManager.getConnection(url, uname, pwd);
-				ps = connection.prepareStatement(sql);
-				ResultSet res = ps.executeQuery();
-				while(res.next()) {
-					p.batchname = res.getString(1);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		}*/
 		p.profession = request.getParameter("job");
 		p.phno = request.getParameter("phno");
 		p.address = request.getParameter("addr");
@@ -86,6 +71,8 @@ public class Register extends HttpServlet {
 		
 		
 		int res = db.addParticipant(p);
+		
+		ArrayList<Batch> bd = db.fetchBatchDetails(batchName);
 		out.println("<html>");
 		out.println("<head>");
 		out.println("<style>");
@@ -94,15 +81,27 @@ public class Register extends HttpServlet {
 		out.println("}");
 		out.println("</style>");
 		out.println("</head>");
+		out.println("<body>");
 		if(res > 0) {
 			String htmlResponse = "Thank you "+p.name+" for joining "+p.batchname+" in our gym";
 			out.println(htmlResponse);
+			
+			out.println("<h4>Batch Details</h4>");
+			if(bd.size()>0) {
+				for(Batch bat: bd) {
+					out.println("<p>Batch ID: "+bat.batchId+"</p>");
+					out.println("<p>Batch Name: "+bat.batchName+"</p>");
+					out.println("<p>Timings: "+bat.timings+"</p>");
+					out.println("<p>Strength: "+bat.strength+"</p>");
+					out.println("<p>Start Date: "+bat.startdate+"</p>");
+				}
+			}
 		}
 		else {
 			out.println("<h1>Participant not added. Please try Again</h1>");
 		}
-		
-		out.println("</html");
+		out.println("</body>");
+		out.println("</html>");
 		out.close();
 	}
 
